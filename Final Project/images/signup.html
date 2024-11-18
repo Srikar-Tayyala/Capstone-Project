@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: url('your-background-image.jpg') no-repeat center center fixed; /* Add your own background image */
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .signup-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 320px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .textbox {
+            margin-bottom: 15px;
+        }
+
+        .textbox input, .textbox select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background: #28a745; /* Green color for submit button */
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background: #218838; /* Darker green on hover */
+        }
+
+        .gender {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .gender input {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .signup-footer {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .signup-footer a {
+            text-decoration: none;
+            color: #007bff; /* Blue color */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="signup-box">
+            <h2>Sign Up</h2>
+            <form>
+                <div class="textbox">
+                    <input type="text" placeholder="Full Name" name="name" required>
+                </div>
+                <div class="textbox">
+                    <input type="email" placeholder="Email" name="email" required>
+                </div>
+                <div class="textbox">
+                    <input type="tel" placeholder="Contact Number" name="contact" required>
+                </div>
+                <div class="textbox">
+                    <input type="text" placeholder="Job Title" name="job" required>
+                </div>
+                <div class="textbox gender">
+                    <label for="gender">Gender:</label>
+                    <div>
+                        <input type="radio" name="gender" value="male" required> Male
+                        <input type="radio" name="gender" value="female" required> Female
+                    </div>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+            <div class="signup-footer">
+                <p>Already have an account? <a href="#">Login</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

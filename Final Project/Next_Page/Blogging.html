@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Editor</title>
+  <style>
+    /* CSS for Layout and Styling */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #0073e6;
+      color: #fff;
+      padding: 10px 20px;
+    }
+    .header h1 {
+      font-size: 1.5rem;
+    }
+    .nav-bar ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+    .nav-bar a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .main-content {
+      display: flex;
+      height: 100%;
+    }
+    .preview, .editor {
+      width: 50%;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .preview {
+      background-color: #f9f9f9;
+      border-right: 1px solid #ddd;
+    }
+    .editor h2, .preview h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    input, textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+    #uploadImage {
+      background-color: #0073e6;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .char-count {
+      text-align: right;
+      font-size: 0.85rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <h1>Blog Editor</h1>
+    <nav class="nav-bar">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Templates</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Help</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Section: Preview and Editor -->
+  <div class="main-content">
+    <!-- Preview Section -->
+    <section class="preview">
+      <h2>Live Preview</h2>
+      <div id="preview-content">
+        <p>Your content will appear here...</p>
+      </div>
+    </section>
+
+    <!-- Editor Section -->
+    <section class="editor">
+      <h2>Edit Your Blog</h2>
+      <input type="text" id="title" placeholder="Blog Title">
+      <textarea id="content" placeholder="Write your blog content here..."></textarea>
+      <div class="char-count" id="charCount">0/1000 characters</div>
+      <button id="uploadImage">Add Image</button>
+      <input type="file" id="imageInput" accept="image/*" style="display: none;">
+    </section>
+  </div>
+
+  <!-- JavaScript for Interactivity -->
+  <script>
+    // JavaScript for Preview, Image Upload, and Character Count
+    const titleInput = document.getElementById("title");
+    const contentInput = document.getElementById("content");
+    const previewContent = document.getElementById("preview-content");
+    const charCount = document.getElementById("charCount");
+    const uploadImageButton = document.getElementById("uploadImage");
+    const imageInput = document.getElementById("imageInput");
+
+    // Update preview in real time
+    function updatePreview() {
+      previewContent.innerHTML = `
+        <h2>${titleInput.value}</h2>
+        <p>${contentInput.value}</p>
+      `;
+    }
+
+    titleInput.addEventListener("input", updatePreview);
+    contentInput.addEventListener("input", () => {
+      updatePreview();
+      charCount.textContent = `${contentInput.value.length}/1000 characters`;
+    });
+
+    // Open file dialog when button is clicked
+    uploadImageButton.addEventListener("click", () => {
+      imageInput.click();
+    });
+
+    // Show image in preview after selection
+    imageInput.addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      if (file && file.type.startsWith("image/")) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          previewContent.innerHTML += `<img src="${e.target.result}" alt="Uploaded Image" style="max-width: 100%; margin-top: 10px;">`;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>

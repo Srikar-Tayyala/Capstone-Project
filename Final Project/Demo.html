@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Webpage Creator</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+        }
+        #dropdown-section {
+            width: 30%;
+            background-color: #34495e;
+            padding: 20px;
+            color: white;
+            border-right: 2px solid #2c3e50;
+        }
+        #dropdown-section h2 {
+            color: #ecf0f1;
+            text-align: center;
+        }
+        #preview-section {
+            width: 70%;
+            position: relative;
+            background-color: #ecf0f1;
+            overflow: auto;
+        }
+        select, input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border-radius: 4px;
+            border: none;
+        }
+        .draggable {
+            position: absolute;
+            border: 2px solid #3498db;
+            cursor: move;
+            resize: both;
+            overflow: auto;
+        }
+        .color-picker, .resize-controls {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="dropdown-section">
+        <h2>Dynamic Webpage Creator</h2>
+        <select id="main-dropdown">
+            <option value="" disabled selected>Select an element</option>
+            <option value="shapes">Shapes</option>
+            <option value="web-elements">Web Elements</option>
+        </select>
+
+        <div id="sub-dropdown-container"></div>
+        <div id="form-container"></div>
+        <div class="color-picker">
+            <label for="color">Choose Color:</label>
+            <input type="color" id="color-picker">
+        </div>
+    </div>
+
+    <div id="preview-section"></div>
+
+    <script>
+        const mainDropdown = document.getElementById('main-dropdown');
+        const subDropdownContainer = document.getElementById('sub-dropdown-container');
+        const formContainer = document.getElementById('form-container');
+        const previewSection = document.getElementById('preview-section');
+        const colorPicker = document.getElementById('color-picker');
+
+        // Initialize draggable and resizable features
+        function initElementFeatures(element) {
+            let offsetX, offsetY;
+            element.style.backgroundColor = colorPicker.value;
+
+            // Draggable functionality
+            element.addEventListener('mousedown', (e) => {
+                offsetX = e.offsetX;
+                offsetY = e.offsetY;
+                document.addEventListener('mousemove', dragElement);
+                document.addEventListener('mouseup', stopDragging);
+            });
+
+            function dragElement(e) {
+                element.style.left = `${e.pageX - offsetX}px`;
+                element.style.top = `${e.pageY - offsetY}px`;
+            }
+
+            function stopDragging() {
+                document.removeEventListener('mousemove', dragElement);
+                document.removeEventListener('mouseup', stopDragging);
+            }
+
+            // Resizable functionality using CSS resize property
+            element.style.resize = 'both';
+            element.style.overflow = 'auto';
+
+            // Color change functionality
+            colorPicker.addEventListener('input', () => {
+                element.style.backgroundColor = colorPicker.value;
+            });
+        }
+
+        // Create dropdown options based on main selection
+        mainDropdown.addEventListener('change', function() {
+            subDropdownContainer.innerHTML = '';
+            formContainer.innerHTML = '';
+
+            if (this.value === 'shapes') {
+                createSubDropdown(['Circle', 'Square', 'Rectangle'], 'shape-type');
+            } else if (this.value === 'web-elements') {
+                createSubDropdown(['Login Box', 'Navigation Bar'], 'web-element-type');
+            }
+        });
+
+        // Create sub-dropdown
+        function createSubDropdown(options, id) {
+            const dropdown = document.createElement('select');
+            dropdown.id = id;
+            dropdown.innerHTML = `<option value="" disabled selected>Select a ${id.replace('-', ' ')}</option>`;
+            options.forEach(option => {
+                dropdown.innerHTML += `<option value="${option.toLowerCase().replace(' ', '-')}">${option}</option>`;
+            });
+            subDropdownContainer.appendChild(dropdown);
+
+            dropdown.addEventListener('change', handleSubDropdownChange);
+        }
+
+        // Handle sub-dropdown selection
+        function handleSubDropdownChange(event) {
+            formContainer.innerHTML = '';
+            const selectedValue = event.target.value;
+
+            if (['circle', 'square', 'rectangle'].includes(selectedValue)) {
+                createShapeForm(selectedValue);
+            } else if (selectedValue === 'login-box') {
+                createLoginBox();
+            }
+        }
+
+        // Shape creation form
+        function createShapeForm(shapeType) {
+            formContainer.innerHTML = `
+                <h3>Create a ${shapeType}</h3>
+                <input type="number" id="width" placeholder="Width (px)" required>
+                <input type="number" id="height" placeholder="Height (px)" required>
+                <button id="create-shape">Create ${shapeType}</button>
+            `;
+
+            document.getElementById('create-shape').addEventListener('click', function() {
+                const width = document.getElementById('width').value || 100;
+                const height = document.getElementById('height').value || 100;
+                createShape(shapeType, width, height);
+            });
+        }
+
+        // Function to create a shape
+        function createShape(type, width, height) {
+            const shape = document.createElement('div');
+            shape.className = 'draggable';
+            shape.style.width = `${width}px`;
+            shape.style.height = `${height}px`;
+
+            if (type === 'circle') {
+                shape.style.borderRadius = '50%';
+            }
+            shape.style.backgroundColor = colorPicker.value;
+
+            initElementFeatures(shape);
+            previewSection.appendChild(shape);
+        }
+
+        // Create login box with edit options
+        function createLoginBox() {
+            const loginBox = document.createElement('div');
+            loginBox.className = 'draggable';
+            loginBox.style.width = '300px';
+            loginBox.style.padding = '20px';
+            loginBox.style.border = '2px solid #3498db';
+            loginBox.style.backgroundColor = '#ffffff';
+
+            loginBox.innerHTML = `
+                <h3>Login</h3>
+                <input type="text" placeholder="Username" style="width:100%;padding:10px;margin:5px 0;">
+                <input type="password" placeholder="Password" style="width:100%;padding:10px;margin:5px 0;">
+                <button style="width:100%;padding:10px;background-color:#3498db;color:white;border:none;">Login</button>
+            `;
+
+            initElementFeatures(loginBox);
+            previewSection.appendChild(loginBox);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Webpage Creator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Title styling */
+        .page-title {
+            font-family: 'Poppins', sans-serif;
+            color: #4a4e69;
+            text-align: center;
+            font-size: 2.7rem;
+            margin-top: 20px;
+        }
+
+        /* Main container styling */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 50px auto;
+            max-width: 1200px;
+            width: 90%;
+            flex: 1;
+        }
+
+        /* Form and image box */
+        .box {
+            display: flex;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            width: 100%;
+        }
+
+        /* Form styling */
+        .form-container {
+            width: 50%;
+            padding: 40px;
+            background-color: #fff;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #4a4e69;
+        }
+
+        .rounded-input {
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            box-sizing: border-box;
+        }
+
+        /* Button styling */
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 25px;
+            background-color: #4a4e69;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #9a8c98;
+        }
+
+        .toggle {
+            cursor: pointer;
+            color: #4a4e69;
+        }
+
+        /* Image box styling */
+        .image-container {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #4a4e69;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 0 15px 15px 0;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #f7f7fa;
+            text-align: right;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* Hide form */
+        .hidden {
+            display: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .box {
+                flex-direction: column;
+                border-radius: 0;
+            }
+            .image-container img {
+                border-radius: 0;
+            }
+            .form-container, .image-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Title -->
+    <header>
+        <h1 class="page-title">Dropdown Webpage Creator</h1>
+    </header>
+
+    <!-- Main container with form and image -->
+    <div class="container">
+        <div class="box">
+            <!-- Form Container -->
+            <div class="form-container login-form">
+                <h2>Log In</h2>
+                <input type="text" placeholder="User Name" class="rounded-input">
+                <input type="password" placeholder="User Password" class="rounded-input">
+                <button class="btn">Login</button>
+                <p>Don't Have an Account? <span class="toggle">Register</span></p>
+            </div>
+
+            <!-- Signup Form -->
+            <div class="form-container signup-form hidden">
+                <h2>Sign Up</h2>
+                <input type="text" placeholder="User Name" class="rounded-input">
+                <input type="email" placeholder="Email" class="rounded-input">
+                <input type="password" placeholder="Password" class="rounded-input">
+                <button class="btn">Sign Up</button>
+                <p>Already Have an Account? <span class="toggle">Login</span></p>
+            </div>
+
+            <!-- Image Container -->
+            <div class="image-container">
+                <img src="/DWC1.webp" alt="Decorative Image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Dropdown Webpage Creator</p>
+    </footer>
+
+    <!-- JavaScript for form toggle -->
+    <script>
+        // Toggle between login and signup forms
+        document.querySelectorAll('.toggle').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelector('.login-form').classList.toggle('hidden');
+                document.querySelector('.signup-form').classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

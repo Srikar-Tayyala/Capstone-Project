@@ -1,0 +1,137 @@
+
+        /* Importing different fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&family=Nunito:wght@300;500&display=swap');
+
+        /* General styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* Light background */
+            color: #333; /* Darker text color for good contrast */
+        }
+
+        /* Header styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #9d8ce7; /* Cool blue */
+            color: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        .header img {
+            width: 50px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 25px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 18px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s, font-weight 0.3s;
+        }
+
+        .nav a:hover {
+            transform: scale(1.1);
+            font-weight: bold;
+        }
+
+        /* Main section styles */
+        .main {
+            padding: 80px 20px;
+            background-color: #ffffff; /* White content area */
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 15px; /* Curved edges */
+            margin: 50px auto;
+            max-width: 800px;
+            text-align: center; /* Aligns content to center */
+        }
+
+        .main h1 {
+            font-family: 'Playfair Display', serif; /* Elegant font for headlines */
+            font-size: 55px;
+            color: #f87d7d;
+            margin-bottom: 20px;
+        }
+
+        .main p {
+            font-family: 'Nunito', sans-serif;
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* Button and select alignment */
+        .cta-button, select {
+            display: inline-block;
+        }
+
+        .cta-button {
+            padding: 15px 40px;
+            background-color: #4a90e2;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            border-radius: 30px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #7cf9c1;
+            transform: scale(1.05);
+        }
+
+        /* Select box styles */
+        select {
+            font-family: 'Nunito', sans-serif;
+            font-size: 18px;
+            padding: 15px;
+            margin: 20px;
+            border-radius: 30px;
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        select:hover {
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+        option {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 10px;
+        }
+
+        /* Footer styles */
+        footer {
+            margin-top: 50px;
+            padding: 20px 0;
+            background-color: #6d40ff;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+        }
+
+        footer h2 {
+            font-size: 28px;
+            font-weight: 700;
+        }
+    

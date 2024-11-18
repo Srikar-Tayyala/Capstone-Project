@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Webpage</title>
+    <style>
+        /* Base Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f4f4f4;
+        }
+        /* Navbar */
+        .navbar {
+            width: 100%;
+            background-color: #2c3e50;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        .navbar-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1abc9c;
+            text-decoration: none;
+        }
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .navbar-links a:hover {
+            color: #1abc9c;
+        }
+        .navbar .dropdown {
+            position: relative;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 30px;
+            left: 0;
+            background-color: #34495e;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu h4 {
+            color: #1abc9c;
+            margin-bottom: 5px;
+        }
+        .dropdown-menu a {
+            color: #ecf0f1;
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
+        }
+        .dropdown-menu a:hover {
+            color: #1abc9c;
+        }
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        .login, .signup {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .login {
+            background-color: transparent;
+            color: #ecf0f1;
+            border: 1px solid #ecf0f1;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .login:hover {
+            background-color: #1abc9c;
+            color: white;
+        }
+        .signup {
+            background-color: #1abc9c;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .signup:hover {
+            background-color: #16a085;
+        }
+        /* Main Content */
+        .main-content {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .main-content h1 {
+            font-size: 36px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .main-content p {
+            font-size: 18px;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        .explore-btn {
+            padding: 12px 24px;
+            background-color: #1abc9c;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .explore-btn:hover {
+            background-color: #16a085;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <a href="#" class="navbar-logo">EduWeb</a>
+        <nav class="navbar-links">
+            <div class="dropdown">
+                <a href="#">Explore</a>
+                <div class="dropdown-menu">
+                    <div>
+                        <h4>Subjects</h4>
+                        <a href="#">Maths</a>
+                        <a href="#">Physics</a>
+                        <a href="#">Chemistry</a>
+                        <a href="#">Biology</a>
+                    </div>
+                    <div>
+                        <h4>State Boards</h4>
+                        <a href="#">Andhra Pradesh</a>
+                        <a href="#">Telangana</a>
+                        <a href="#">Maharashtra</a>
+                        <a href="#">Karnataka</a>
+                    </div>
+                </div>
+            </div>
+            <a href="#">Courses</a>
+            <a href="#">Resources</a>
+        </nav>
+        <div class="auth-buttons">
+            <button class="login">Login</button>
+            <button class="signup">Sign Up</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="main-content">
+        <h1>Welcome to EduWeb</h1>
+        <p>Your one-stop platform for interactive learning, practice exercises, and high-quality educational content!</p>
+        <button class="explore-btn">Explore Courses</button>
+    </section>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+   
+</head>
+<body>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: url('your-background-image.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-box {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .textbox {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .textbox input {
+            width: 90%;
+            padding: 15px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: #007bff;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .social-login {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            width: 32%;
+            padding: 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .google {
+            background: #db4437;
+        }
+
+        .facebook {
+            background: #3b5998;
+        }
+
+        .apple {
+            background: #000;
+        }
+
+        .signup {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .signup a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+    </style>
+
+    <div class="container">
+        <div class="login-box">
+            <h2>Login</h2>
+            <form>
+                <div class="textbox">
+                    <input type="text" placeholder="Username" name="username" required>
+                </div>
+                <div class="textbox">
+                    <input type="password" placeholder="Password" name="password" required>
+                </div>
+                <button type="button" class="btn" onclick="redirect()">Login</button>
+            </form>
+            <div class="social-login">
+                <p>Or login with</p>
+                <button class="social-btn google">Google</button>
+                <button class="social-btn facebook">Facebook</button>
+                <button class="social-btn apple">Apple</button>
+            </div>
+            <p class="signup">Don't have an account? <a href="#">Sign Up</a></p>
+        </div>
+    </div>
+
+    <script>
+        function redirect() {
+            window.location.href = 'nextpage.html'; // Replace 'dashboard.html' with your target page
+        }
+    </script>
+
+</body>
+</html>

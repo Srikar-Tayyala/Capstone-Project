@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Business Page</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+        }
+        /* Sidebar (Edit Panel) */
+        .sidebar {
+            width: 25%;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+        }
+        .sidebar h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #e67e22;
+        }
+        .sidebar label {
+            font-size: 14px;
+            margin: 10px 0 5px;
+            display: block;
+            color: #ecf0f1;
+        }
+        .sidebar input, .sidebar select, .sidebar button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .sidebar button {
+            background-color: #e67e22;
+            color: white;
+            cursor: pointer;
+        }
+        /* Preview Panel */
+        .preview {
+            width: 75%;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #ecf0f1;
+            position: relative;
+        }
+        /* Navbar */
+        .navbar {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            justify-content: space-between;
+            background-color: #2980b9;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+        .navbar:hover {
+            background-color: #1abc9c;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        /* Dashboard */
+        .dashboard {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-wrap: wrap;
+            background-color: #3498db;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+        .dashboard:hover {
+            background-color: #e67e22;
+        }
+        .dashboard div {
+            width: 48%;
+            background-color: #fff;
+            margin: 5px;
+            padding: 15px;
+            border-radius: 4px;
+            color: #2c3e50;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .dashboard div:hover {
+            transform: scale(1.05);
+        }
+        /* Content Section */
+        .content-section {
+            width: 100%;
+            max-width: 800px;
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+        .content-section:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        /* Save Button */
+        .save-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 50px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .save-btn:hover {
+            background-color: #c0392b;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Edit Sidebar -->
+        <div class="sidebar">
+            <h2>Edit Panel</h2>
+            <label for="bgColor">Background Color</label>
+            <input type="color" id="bgColor" value="#ecf0f1">
+            
+            <label for="navbarColor">Navbar Color</label>
+            <input type="color" id="navbarColor" value="#2980b9">
+            
+            <label for="dashboardColor">Dashboard Color</label>
+            <input type="color" id="dashboardColor" value="#3498db">
+            
+            <label for="sectionTitle">Section Title</label>
+            <input type="text" id="sectionTitle" placeholder="Enter Section Title">
+            
+            <label for="sectionContent">Section Content</label>
+            <textarea id="sectionContent" placeholder="Enter content here..." rows="5"></textarea>
+            
+            <button onclick="addSection()">Add Section</button>
+        </div>
+
+        <!-- Preview Panel -->
+        <div class="preview" id="preview">
+            <!-- Navbar -->
+            <div class="navbar" id="navbar">
+                <span>Business Webpage</span>
+                <nav>
+                    <a href="#gallery">Gallery</a>
+                    <a href="#products">Products</a>
+                    <a href="#join">Join Us</a>
+                </nav>
+            </div>
+            
+            <!-- Dashboard -->
+            <div class="dashboard" id="dashboard">
+                <div><h3>My Account</h3></div>
+                <div><h3>My Sales</h3></div>
+                <div><h3>Network</h3></div>
+                <div><h3>Your Products</h3></div>
+                <div><h3>Your History</h3></div>
+                <div><h3>Clients</h3></div>
+            </div>
+            
+            <!-- Dynamic Content Sections -->
+            <div id="content-area"></div>
+        </div>
+    </div>
+    
+    <!-- Save Button -->
+    <button class="save-btn" onclick="saveChanges()">Save</button>
+
+    <script>
+        // Change Background Color of Preview
+        document.getElementById('bgColor').addEventListener('input', function() {
+            document.getElementById('preview').style.backgroundColor = this.value;
+        });
+
+        // Change Navbar Color
+        document.getElementById('navbarColor').addEventListener('input', function() {
+            document.getElementById('navbar').style.backgroundColor = this.value;
+        });
+
+        // Change Dashboard Color
+        document.getElementById('dashboardColor').addEventListener('input', function() {
+            document.getElementById('dashboard').style.backgroundColor = this.value;
+        });
+
+        // Function to Add a New Section
+        function addSection() {
+            const title = document.getElementById('sectionTitle').value;
+            const content = document.getElementById('sectionContent').value;
+
+            if (title && content) {
+                const section = document.createElement('div');
+                section.classList.add('content-section');
+                section.innerHTML = `<h2>${title}</h2><p>${content}</p>`;
+
+                document.getElementById('content-area').appendChild(section);
+
+                document.getElementById('sectionTitle').value = '';
+                document.getElementById('sectionContent').value = '';
+            } else {
+                alert("Please enter both title and content.");
+            }
+        }
+
+        // Save Button Action (Demo)
+        function saveChanges() {
+            alert("Your changes have been saved successfully!");
+        }
+    </script>
+</body>
+</html>

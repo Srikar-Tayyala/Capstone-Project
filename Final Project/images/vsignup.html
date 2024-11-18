@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@500;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(background1.jpg); /* Replace with actual image URL */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #0737ab;
+        }
+
+        .signup-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .signup-container h2 {
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .signup-container label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .signup-container input,
+        .signup-container select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+        }
+
+        .signup-container button {
+            width: 100%;
+            padding: 15px;
+            background-color: #0737ab;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-family: 'Roboto', sans-serif;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .signup-container button:hover {
+            background-color: #052a87;
+        }
+
+        /* Optional: style for placeholder image or actual background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* This creates a darker overlay */
+            z-index: -1;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="number">Phone Number</label>
+            <input type="tel" id="number" name="number" required>
+
+            <label for="role">Role</label>
+            <input type="text" id="role" name="role" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="purpose">What is your website for?</label>
+            <select id="purpose" name="purpose" required>
+                <option value="personal">Personal</option>
+                <option value="e-commerce">E-commerce</option>
+                <option value="business">Business</option>
+                <option value="education">Education</option>
+                <option value="event">Event</option>
+            </select>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        // Function to handle redirection after form submission
+        function redirectToNextPage(event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+            window.location.href = "nextpage.html"; // Redirect to the next page
+        }
+
+        // Attach the function to the form's submit event
+        document.getElementById("signupForm").addEventListener("submit", redirectToNextPage);
+    </script>
+</body>
+</html>

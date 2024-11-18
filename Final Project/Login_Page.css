@@ -1,0 +1,96 @@
+/* Resetting */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #8c5ffe;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Container */
+.container {
+    display: flex;
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Form Container */
+.form-container {
+    padding: 60px;
+    width: 500px;
+    background: #f3e5f5;
+}
+
+.form {
+    text-align: center;
+}
+
+.form h2 {
+    margin-bottom: 20px;
+    color: #ec0b0b;
+}
+
+.form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #6a1b9a;
+    border-radius: 5px;
+}
+
+.btn {
+    background: #6a1b9a;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #9c27b0;
+}
+
+/* Toggle link */
+.toggle {
+    color: #dfa69c;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.image-container {
+    padding: 40px;
+    background: #ede7f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container img {
+    width: 500px;
+}
+
+/* Hidden Signup Form */
+.hidden {
+    display: none;
+}
+
+/* Footer */
+footer {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.8em;
+    color: #fff;
+}
